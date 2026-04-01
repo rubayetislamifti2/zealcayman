@@ -1,0 +1,111 @@
+{
+  "info": {
+    "_postman_id": "512530a3-8bd7-4221-b4ce-dc053bcbce94",
+    "name": "Laravel Boilerplate",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "id": "809e811a-28d5-427c-ba78-5b43a18aa4b3",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "rubayetislam16@gmail.com",
+                  "type": "text",
+                  "uuid": "1beceaee-b342-421c-9bb0-d58cd143fb67"
+                },
+                {
+                  "key": "name",
+                  "value": "Rubayet",
+                  "type": "text",
+                  "uuid": "067910ef-4501-4357-8bad-dea24fa32b8c"
+                },
+                {
+                  "key": "password",
+                  "value": "12345678",
+                  "type": "text",
+                  "uuid": "c69a8b0d-4161-47c5-86cc-3fc86e3f3431"
+                },
+                {
+                  "key": "password_confirmation",
+                  "value": "12345678",
+                  "type": "text",
+                  "uuid": "780c77f8-9989-4a8c-905b-cd96527c5de8"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseURL}}/auth/register",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "id": "dafc9a64-4a89-4070-86ae-8fd6ca33fb5a",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "rubayetislam16@gmail.com",
+                  "type": "text",
+                  "uuid": "f5045927-c369-41c5-9cfd-8d4387bcd3de"
+                },
+                {
+                  "key": "password",
+                  "value": "12345678",
+                  "type": "text",
+                  "uuid": "08ba8fe8-1dde-4032-acdc-d10a310015a1"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseURL}}/auth/login",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "0a6034db-8adf-4ebc-9ee9-a305f573a623"
+    }
+  ],
+  "variable": [
+    {
+      "id": "37a88b41-18f8-40fe-a140-217311e24ecb",
+      "key": "baseURL",
+      "value": ""
+    },
+    {
+      "id": "b1562cf9-cdb4-42e3-a3e1-94db889f7b4d",
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
