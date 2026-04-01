@@ -6,21 +6,24 @@ use App\Http\Controllers\{AuthController, FAQController, ProfileController, Sett
 
 Route::prefix('auth')->group(function () {
     Route::post('register',[AuthController::class,'register']);
-    Route::post('verifyOtp',[AuthController::class,'verifyOtp']);
-    Route::post('resendOtp',[AuthController::class,'resendOtp']);
-    Route::post('forgetPassword/otp/send',[AuthController::class,'forgetPasswordOTPSend']);
-    Route::post('forgetPassword',[AuthController::class,'forgetPassword']);
+    Route::post('verify-otp',[AuthController::class,'verifyOtp']);
+    Route::post('resend-otp',[AuthController::class,'resendOtp']);
+    Route::post('forget-password',[AuthController::class,'forgetPassword']);
+    Route::post('reset-password',[AuthController::class,'resetPassword']);
     Route::post('login',[AuthController::class,'login']);
+    Route::post('logout',[AuthController::class,'logout'])->middleware(['jwt.auth']);
 });
 
 
 Route::middleware(['jwt.auth'])->group(function () {
 
-    Route::get('unread/notifications',[NotificationController::class,'unreadNotification']);
-    Route::get('notifications', [NotificationController::class, 'getNotifications']);
-    Route::get('unread/notifications/count', [NotificationController::class, 'unreadCount']);
-    Route::post('markAsRead/{id}', [NotificationController::class, 'markAsRead']);
-    Route::post('markAllAsRead', [NotificationController::class, 'markAllAsRead']);
+    Route::prefix('notifications')->group(function () {
+        Route::get('/',              [NotificationController::class, 'getNotifications']);
+        Route::get('unread',         [NotificationController::class, 'unreadNotification']);
+        Route::get('unread/count',   [NotificationController::class, 'unreadCount']);
+        Route::post('mark-all-read', [NotificationController::class, 'markAllAsRead']);
+        Route::post('{id}/read',     [NotificationController::class, 'markAsRead']);
+    });
 
     Route::prefix('settings')->group(function () {
         Route::post('update-profile',[ProfileController::class,'updateProfile']);
@@ -46,6 +49,4 @@ Route::middleware(['jwt.auth'])->group(function () {
         Route::post('faq/{id}',[FAQController::class,'updateFaq']);
         Route::delete('faq/{id}',[FAQController::class,'deleteFaq']);
     });
-
-    Route::post('logout',[AuthController::class,'logout']);
 });

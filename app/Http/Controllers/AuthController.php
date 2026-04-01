@@ -149,7 +149,7 @@ class AuthController extends Controller
         }
     }
 
-    public function forgetPasswordOTPSend(Request $request)
+    public function forgetPassword(Request $request)
     {
         try {
             $validator = Validator::make($request->all(),[
@@ -176,7 +176,7 @@ class AuthController extends Controller
         }
     }
 
-    public function forgetPassword(Request $request)
+    public function resetPassword(Request $request)
     {
         try {
             $validator = Validator::make($request->all(),[
